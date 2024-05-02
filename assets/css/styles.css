@@ -71,3 +71,27 @@ input {
   color: white;
   font-size: 1.8rem;
 }
+
+/* Search History */
+.search-history {
+  padding-top: var( --section-padding-y-sm );
+  padding-bottom: var( --section-padding-y-sm );
+}
+
+.search-history-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.search-history-item {
+  font-size: 1.4rem;
+  background-color: antiquewhite;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.search-history-item:last-of-type {
+  margin-bottom: 0;
+}
