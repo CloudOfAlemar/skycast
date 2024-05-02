@@ -1,4 +1,9 @@
 
+:root {
+  --section-padding-y-sm: 2rem;
+  --section-padding-x-sm: 2rem
+}
+
 /* Base Styles */
 * {
   padding: 0;
@@ -15,20 +20,54 @@ button {
   border: none;
   background-color: transparent;
   color: inherit;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
 }
 
 .container {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: var( --section-padding-x-sm );
+  padding-right: var( --section-padding-x-sm );
 }
 
 /* Header Styles */
 .header {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: var( --section-padding-y-sm );
+  padding-bottom: var( --section-padding-y-sm );
 }
 
 .page-heading {
   font-size: 2.8rem;
   line-height: 1.05;
+}
+
+/* Main */
+
+/* City Search */
+.city-search {
+  padding-top: var( --section-padding-y-sm );
+  padding-bottom: var( --section-padding-y-sm );
+}
+
+.city-search-heading {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  padding: .5rem;
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.search-btn {
+  background-color: lightblue;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.8rem;
 }
