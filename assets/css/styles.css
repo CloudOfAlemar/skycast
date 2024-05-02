@@ -95,3 +95,30 @@ input {
 .search-history-item:last-of-type {
   margin-bottom: 0;
 }
+
+/* Forcast */
+.forcast {
+  padding-top: var( --section-padding-y-sm );
+  padding-bottom: var( --section-padding-y-sm );
+}
+
+/* Primary Forcast */
+.primary-forcast {
+  border: 4px solid lightblue;
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.primary-forcast-city {
+  font-size: 2.4rem;
+  line-height: 1.4;
+}
+
+.primary-forcast p {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.primary-forcast p:last-of-type {
+  margin-bottom: 0;
+}
