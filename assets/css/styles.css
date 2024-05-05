@@ -104,10 +104,13 @@ input {
 
 .search-history-item {
   font-size: 1.4rem;
-  background-color: antiquewhite;
   padding: 1rem;
   border-radius: 4px;
   margin-bottom: 1rem;
+}
+
+.search-history-item:nth-child( odd ) {
+  background-color: var( --light-gray-blue );
 }
 
 .search-history-item:last-of-type {
