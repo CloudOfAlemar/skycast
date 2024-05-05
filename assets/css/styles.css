@@ -1,6 +1,6 @@
 
 :root {
-  --text-color-dark: #1E015B;
+  --dark-purple: #1E015B;
   --light-blue: #54C1FB;
   --purple: #5271FF;
   --light-gray-blue: #F4F6FF;
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  color: var( --text-color-dark );
+  color: var( --dark-purple );
 }
 
 button {
@@ -62,7 +62,7 @@ input {
 }
 
 .page-heading-alt {
-  color: var( --text-color-dark );
+  color: var( --dark-purple );
 }
 
 /* Main */
@@ -78,10 +78,16 @@ input {
 }
 
 .search-input {
-  padding: .5rem;
+  background-color: var(--light-gray-blue);
+  color: hsla(259.33deg, 97.83%, 18.04%, .5);
+  font-size: 1.6rem;
   display: block;
   width: 100%;
-  margin-bottom: 1rem;
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  outline: none;
 }
 
 .search-btn {
@@ -96,7 +102,7 @@ input {
 /* Search History */
 .search-history {
   padding: 2rem 0;
-  color: hsla(259.33deg, 97.83%, 18.04%, .5);;
+  color: hsla(259.33deg, 97.83%, 18.04%, .5);
 }
 
 .search-history-btn {
