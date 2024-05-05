@@ -209,6 +209,8 @@ input {
   margin-bottom: .5rem;
 }
 
+/* Media Queries */
+
 @media screen and ( min-width: 768px ) {
 
   /* Base Styles */
@@ -231,6 +233,10 @@ input {
   }
 
   /* Main */
+  .main {
+    padding-top: 6rem;
+  }
+
   .main-container {
     display: flex;
     justify-content: space-between;
@@ -241,9 +247,15 @@ input {
     width: 40%;
   }
 
+  /* City Search */
+  .city-search {
+    padding-top: 0;
+  }
+
   /* Forcast */
   .forcast {
     width: 55%;
+    padding-top: 0;
   }
 
   /* Primary Forcast */
@@ -270,5 +282,66 @@ input {
   /* Other Forcast */
   .forcast-card {
     font-size: 1.4rem;
+  }
+}
+
+@media screen and ( min-width: 1200px ) {
+  /* Base Styles */
+  .container {
+    max-width: 1160px;
+  }
+
+  /* Search */
+  .search {
+    width: 30%;
+  }
+
+  /* Search History */
+  .search-history-item {
+    font-size: 1.6rem;
+  }
+
+  /* Forcast */
+  .forcast {
+    width: 65%;
+  }
+
+  /* Primary Forcast */
+  .primary-forcast-city {
+    font-size: 3.2rem;
+  }
+
+  .primary-forcast-img {
+    width: 150px;
+  }
+
+  .primary-forcast p {
+    font-size: 2rem;
+  }
+
+  /* Other Forcast */
+  .other-forcast-cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .forcast-card {
+    font-size: 1.6rem;
+  }
+
+  .forcast-card:nth-child( odd ) {
+    margin-right: 2rem;
+  }
+
+  .forcast-card-img {
+    width: 100px;
+  }
+
+  .forcast-card {
+    margin-bottom: 2rem;
+  }
+
+  .forcast-card:last-of-type {
+    margin-bottom: 0;
   }
 }
