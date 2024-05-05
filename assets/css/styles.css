@@ -1,4 +1,11 @@
 
+:root {
+  --text-color-dark: #1E015B;
+  --light-blue: #54C1FB;
+  --purple: #5271FF;
+  --light-gray-blue: #F4F6FF;
+}
+
 /* Base Styles */
 * {
   padding: 0;
@@ -11,6 +18,10 @@ html {
   font-size: .625rem;
 }
 
+body {
+  color: var( --text-color-dark );
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -20,6 +31,7 @@ button {
 
 input {
   font-family: inherit;
+  color: inherit;
 }
 
 .container {
@@ -56,7 +68,7 @@ input {
 }
 
 .search-btn {
-  background-color: lightblue;
+  background-color: var( --purple );
   padding: 1rem;
   width: 100%;
   border-radius: 4px;
@@ -69,16 +81,25 @@ input {
   padding: 2rem 0;
 }
 
-.search-history-heading {
+.search-history-btn {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  display: block;
+  width: 100%;
+  background-color: var( --light-gray-blue );
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.search-history-icon {
+  margin-left: .5rem;
 }
 
 .search-history-list {
   max-height: 0;
   overflow: hidden;
   transition: max-height 250ms;
+  padding-top: 2rem;
 }
 
 .search-history-item {

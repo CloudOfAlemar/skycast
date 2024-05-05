@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/4982c8e01d.js" crossorigin="anonymous"></script>
+
+  <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
+
+  <!-- Poppins Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <title>SkyCast</title>
 </head>
@@ -41,7 +48,10 @@
 
         <!-- Search History -->
         <div class="search-history">
-          <h2 class="search-history-heading">History:</h2>
+          <button class="search-history-btn">
+            Search History
+            <i class="fa-solid fa-clock-rotate-left search-history-icon"></i>
+          </button>
           <ul class="search-history-list" data-state="hidden">
             <li class="search-history-item" tabindex="0">City 1</li>
             <li class="search-history-item" tabindex="0">City 2</li>
