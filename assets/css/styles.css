@@ -79,6 +79,7 @@ input {
 /* Search History */
 .search-history {
   padding: 2rem 0;
+  color: hsla(259.33deg, 97.83%, 18.04%, .5);;
 }
 
 .search-history-btn {
@@ -104,9 +105,8 @@ input {
 
 .search-history-item {
   font-size: 1.4rem;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   border-radius: 4px;
-  margin-bottom: 1rem;
 }
 
 .search-history-item:nth-child( odd ) {
