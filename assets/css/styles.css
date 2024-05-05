@@ -122,3 +122,38 @@ input {
 .primary-forcast p:last-of-type {
   margin-bottom: 0;
 }
+
+/* Other Forcast */
+.other-forcast {
+  padding-top: var( --section-padding-y-sm );
+  padding-bottom: var( --section-padding-y-sm );
+}
+
+.other-forcast-heading {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+}
+
+.forcast-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid lavender;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.forcast-card:last-of-type {
+  margin-bottom: 0;
+}
+
+.forcast-card-img {
+  width: 75px;
+}
+
+.forcast-card-temp,
+.forcast-card-wind {
+  margin-bottom: .5rem;
+}
