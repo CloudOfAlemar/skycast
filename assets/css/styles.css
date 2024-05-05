@@ -1,9 +1,4 @@
 
-:root {
-  --section-padding-y-sm: 2rem;
-  --section-padding-x-sm: 2rem
-}
-
 /* Base Styles */
 * {
   padding: 0;
@@ -28,14 +23,12 @@ input {
 }
 
 .container {
-  padding-left: var( --section-padding-x-sm );
-  padding-right: var( --section-padding-x-sm );
+  padding: 0 2rem;
 }
 
 /* Header Styles */
 .header {
-  padding-top: var( --section-padding-y-sm );
-  padding-bottom: var( --section-padding-y-sm );
+  padding: 2rem 0;
 }
 
 .page-heading {
@@ -47,8 +40,7 @@ input {
 
 /* City Search */
 .city-search {
-  padding-top: var( --section-padding-y-sm );
-  padding-bottom: var( --section-padding-y-sm );
+  padding: 2rem 0;
 }
 
 .city-search-heading {
@@ -74,14 +66,19 @@ input {
 
 /* Search History */
 .search-history {
-  padding-top: var( --section-padding-y-sm );
-  padding-bottom: var( --section-padding-y-sm );
+  padding: 2rem 0;
 }
 
 .search-history-heading {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 2rem;
+}
+
+.search-history-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 250ms;
 }
 
 .search-history-item {
@@ -98,8 +95,7 @@ input {
 
 /* Forcast */
 .forcast {
-  padding-top: var( --section-padding-y-sm );
-  padding-bottom: var( --section-padding-y-sm );
+  padding: 4rem 0 2rem;
 }
 
 /* Primary Forcast */
@@ -125,8 +121,7 @@ input {
 
 /* Other Forcast */
 .other-forcast {
-  padding-top: var( --section-padding-y-sm );
-  padding-bottom: var( --section-padding-y-sm );
+  padding: 6rem 0 2rem;
 }
 
 .other-forcast-heading {
