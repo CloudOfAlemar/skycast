@@ -36,6 +36,8 @@ input {
 
 .container {
   padding: 0 2rem;
+  max-width: 425px;
+  margin: auto;
 }
 
 /* Header Styles */
@@ -69,7 +71,7 @@ input {
 
 /* City Search */
 .city-search {
-  padding: 2rem 0;
+  padding: 6rem 0 2rem;
 }
 
 .city-search-heading {
@@ -147,14 +149,16 @@ input {
 
 /* Primary Forcast */
 .primary-forcast {
-  border: 4px solid lightblue;
   border-radius: 4px;
   padding: 2rem;
+  background: linear-gradient(45deg, #F4F6FF, transparent);
 }
 
 .primary-forcast-city {
   font-size: 2.4rem;
   line-height: 1.4;
+  color: var(--purple);
+  font-weight: 600;
 }
 
 .primary-forcast p {
@@ -174,13 +178,14 @@ input {
 .other-forcast-heading {
   font-size: 2.4rem;
   margin-bottom: 3rem;
+  font-weight: 600;
 }
 
 .forcast-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid lavender;
+  border: 3px solid var( --light-gray-blue );
   border-radius: 4px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -191,6 +196,10 @@ input {
   margin-bottom: 0;
 }
 
+.forcast-card-date {
+  color: var( --purple );
+}
+
 .forcast-card-img {
   width: 75px;
 }
@@ -198,4 +207,68 @@ input {
 .forcast-card-temp,
 .forcast-card-wind {
   margin-bottom: .5rem;
+}
+
+@media screen and ( min-width: 768px ) {
+
+  /* Base Styles */
+  .container {
+    max-width: 750px;
+  }
+
+  /* Header */
+  .header {
+    padding: 4rem 0;
+  }
+  
+  .header-logo {
+    width: 175px;
+  }
+
+  .page-heading {
+    font-size: 3.8rem;
+    width: auto;
+  }
+
+  /* Main */
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Search */
+  .search{
+    width: 40%;
+  }
+
+  /* Forcast */
+  .forcast {
+    width: 55%;
+  }
+
+  /* Primary Forcast */
+  .primary-forcast {
+    padding: 3rem;
+  }
+
+  .primary-forcast-city {
+    margin-bottom: 2rem;
+  }
+
+  .primary-forcast-img {
+    margin-bottom: 2rem;
+  }
+
+  .primary-forcast p {
+    margin-bottom: 1.5rem;
+  }
+
+  .primary-forcast p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* Other Forcast */
+  .forcast-card {
+    font-size: 1.4rem;
+  }
 }
