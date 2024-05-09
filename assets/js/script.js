@@ -4,7 +4,9 @@ const searchBtn = document.querySelector( ".search-btn" );
 const searchInput = document.querySelector( ".search-input" );
 const searchHistoryBtn = document.querySelector( ".search-history-btn" );
 const searchHistoryList = document.querySelector( ".search-history-list" );
-const forcast = document.querySelector( ".forecast" );
+const forecast = document.querySelector( ".forecast" );
+const primaryForecast = document.querySelector( ".primary-forecast" );
+const otherForecastCards = document.querySelector( ".other-forecast-cards" );
 
 const apiObj = {
   key: "873da18ac866fdce4b4c52d044835c91",
@@ -34,13 +36,14 @@ const fetchApi = function() {
     } )
     .then( function( currentWeatherData ) {
       dataObj.weatherData = currentWeatherData;
-      return fetch( `${ apiObj.weatherURL }?lat=${ dataObj.lat }&lon=${ dataObj.lon }&appid=${ apiObj.key }` );
+      return fetch( `${ apiObj.weatherURL }?lat=${ dataObj.lat }&lon=${ dataObj.lon }&appid=${ apiObj.key }&units=imperial` );
     } )
     .then( function( res ) {
       return res.json();
     } )
     .then( function( forecastData ) {
       console.log( forecastData.list );
+      dataObj.otherForecastData = forecastData.list;
       resolve( dataObj );
     } )
   } );
@@ -57,11 +60,37 @@ const createFormatDate = function( unformattedDate ) {
   return dateFormatter.format( date );
 }
 
-const createFullForcast = function( dataObj ) {
+const createOtherForecastsHTML = function( otherForecasts ) {
+  let otherForcastsHTML = ``;
+  for( const forecast of otherForecasts ) {
+    const hour = new Date( forecast.dt_txt ).getHours();
+    if( hour - 12 === 3 ) {
+      const date = createFormatDate( forecast.dt_txt );
+      const weatherIcon = forecast.weather[ 0 ].icon;
+      const temp = forecast.main.temp;
+      const humidity = forecast.main.humidity;
+      const wind = forecast.wind.speed;
+      otherForcastsHTML +=
+        `<div class="forecast-card">
+          <p class="forecast-card-date">${ date }</p>
+          <img src="https://openweathermap.org/img/wn/${ weatherIcon }@2x.png" alt="Icon of the forecast" class="forecast-card-img">
+          <div class="forecast-card-info">
+            <p class="forecast-card-temp">Temp: ${ temp }°F</p>
+            <p class="forecast-card-wind">Wind: ${ wind } MPH</p>
+            <p class="forecast-card-humidity">Humidity: ${ humidity }%</p>
+          </div>
+        </div>`
+    }
+  }
+  return otherForcastsHTML;
+}
+
+const createFullForecast = function( dataObj ) {
   const { city, state, country, weatherData: { main : { humidity, temp }, wind : { speed }, weather } } = dataObj;
   const weatherIcon = weather[ 0 ].icon;
   const currentDate = createFormatDate( Date.now() );
-  let fullForcastHTML = 
+  const otherForecastsHTML = createOtherForecastsHTML( dataObj.otherForecastData );
+  let fullForecastHTML = 
     `<div class="primary-forecast">
       <div class="forecast-city-img-wrapper">
         <h2 class="primary-forecast-city">${ city }, ${ state }, ${ country } ${ currentDate }</h2>
@@ -71,7 +100,8 @@ const createFullForcast = function( dataObj ) {
       <p class="primary-forecast-wind">Wind: ${ speed } MPH</p>
       <p class="primary-forecast-humidity">Humidity: ${ humidity }%</p>
     </div>`;
-  forcast.innerHTML = fullForcastHTML;
+  primaryForecast.innerHTML = fullForecastHTML;
+  otherForecastCards.innerHTML = otherForecastsHTML;
 }
 
 searchHistoryBtn.addEventListener( "click", function() {
@@ -90,6 +120,6 @@ searchBtn.addEventListener( "click", function( event ) {
   fetchApi()
     .then( function( dataObj ) {
       console.log( dataObj );
-      createFullForcast( dataObj );
+      createFullForecast( dataObj );
     } );
 } );
