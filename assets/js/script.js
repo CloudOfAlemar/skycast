@@ -93,7 +93,7 @@ const createFullForecast = function( dataObj ) {
   let fullForecastHTML = 
     `<div class="primary-forecast">
       <div class="forecast-city-img-wrapper">
-        <h2 class="primary-forecast-city">${ city }, ${ state }, ${ country } ${ currentDate }</h2>
+        <h2 class="primary-forecast-city">${ city }, ${ state ? state : "N/A" }, ${ country } ${ currentDate }</h2>
         <img src="https://openweathermap.org/img/wn/${ weatherIcon }@2x.png" alt="Icon of the forecast" class="primary-forecast-img">
       </div>
       <p class="primary-forecast-temp">Temp: ${ temp }°F</p>

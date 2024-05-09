@@ -337,7 +337,8 @@ input {
 
   .forecast-card {
     padding: 3rem 2rem;
-    margin: 0 2rem 2rem 0;
+    margin: 0 1.5rem 2rem 0;
+    width: 338px;
   }
 }
 
