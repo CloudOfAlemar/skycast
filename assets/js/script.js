@@ -11,7 +11,7 @@ const historyCities = JSON.parse( localStorage.getItem( "historyCities" ) ) || [
 
 const apiObj = {
   key: "873da18ac866fdce4b4c52d044835c91",
-  geoCodeURL: "http://api.openweathermap.org/geo/1.0/direct",
+  geoCodeURL: "https://api.openweathermap.org/geo/1.0/direct",
   weatherURL: "https://api.openweathermap.org/data/2.5/forecast",
   currentWeatherURL: "https://api.openweathermap.org/data/2.5/weather"
 };
