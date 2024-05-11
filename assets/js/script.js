@@ -2,6 +2,7 @@
 
 const searchBtn = document.querySelector( ".search-btn" );
 const searchInput = document.querySelector( ".search-input" );
+const searchTooltip = document.querySelector( ".search-tooltip" );
 const searchHistoryBtn = document.querySelector( ".search-history-btn" );
 const searchHistoryList = document.querySelector( ".search-history-list" );
 const forecast = document.querySelector( ".forecast" );
@@ -16,6 +17,11 @@ const apiObj = {
   currentWeatherURL: "https://api.openweathermap.org/data/2.5/weather"
 };
 
+// Clear searchInput field
+const clearSearchInput = function() {
+  searchInput.value = "";
+}
+
 // Pull data from API
 const fetchApi = function() {
   return new Promise( function( resolve, reject ) {
@@ -25,13 +31,13 @@ const fetchApi = function() {
       return res.json();
     } )
     .then( function( geoCodeData ) {
-      const { lat, lon, country, name: city, state } = geoCodeData[ 0 ];
-      dataObj.city = city;
-      dataObj.state = state;
-      dataObj.country = country;
-      dataObj.lat = lat;
-      dataObj.lon = lon;
-      return fetch( `${ apiObj.currentWeatherURL }?lat=${ lat }&lon=${ lon }&appid=${ apiObj.key }&units=imperial` );
+        const { lat, lon, country, name: city, state } = geoCodeData[ 0 ];
+        dataObj.city = city;
+        dataObj.state = state;
+        dataObj.country = country;
+        dataObj.lat = lat;
+        dataObj.lon = lon;
+        return fetch( `${ apiObj.currentWeatherURL }?lat=${ lat }&lon=${ lon }&appid=${ apiObj.key }&units=imperial` );
     } )
     .then( function( res ) {
       return res.json();
@@ -44,9 +50,15 @@ const fetchApi = function() {
       return res.json();
     } )
     .then( function( forecastData ) {
+      if( !searchTooltip.classList.contains( "hide" ) ) searchTooltip.classList.add( "hide" );
       dataObj.otherForecastData = forecastData.list;
       resolve( dataObj );
     } )
+    .catch( function( error ) {
+      // display an invalid tooltip
+      searchTooltip.classList.remove( "hide" );
+      clearSearchInput();
+    })
   } );
 }
 
@@ -104,7 +116,7 @@ const createFullForecast = function( dataObj ) {
   let fullForecastHTML = 
     `<div class="primary-forecast" data-id="${ uniqueId }">
       <div class="forecast-city-img-wrapper">
-        <h2 class="primary-forecast-city">${ city }, ${ state ? state : "N/A" }, ${ country } ${ currentDate }</h2>
+        <h2 class="primary-forecast-city">${ city }, ${ state ? `${ state },` : "" } ${ country } ${ currentDate }</h2>
         <img src="https://openweathermap.org/img/wn/${ weatherIcon }@2x.png" alt="Icon of the forecast" class="primary-forecast-img">
       </div>
       <p class="primary-forecast-temp">Temp: ${ temp }°F</p>
@@ -124,8 +136,13 @@ const createHistoryCitiesHTML = function( historyCities ) {
   return html;
 }
 
+const setSearchHistoryListMaxHeight = function() {
+  searchHistoryList.style.maxHeight = `${ searchHistoryList.scrollHeight }px`;
+}
+
 const renderHistoryCitiesHTML = function( historyCities ) {
   searchHistoryList.innerHTML = createHistoryCitiesHTML( historyCities );
+  if( searchHistoryList.dataset.state === "visible" ) setSearchHistoryListMaxHeight();
 }
 
 const addToHistoryCities = function( dataObj ) {
@@ -143,14 +160,9 @@ const addToHistoryCities = function( dataObj ) {
   }
 }
 
-const clearSearchInput = function() {
-  searchInput.value = "";
-}
-
 searchHistoryBtn.addEventListener( "click", function() {
-  const listHeight = searchHistoryList.scrollHeight;
   if( searchHistoryList.dataset.state === "hidden" ) {
-    searchHistoryList.style.maxHeight = `${ listHeight }px`;
+    setSearchHistoryListMaxHeight();
     searchHistoryList.dataset.state = "visible";
   } else {
     searchHistoryList.style.maxHeight = "0px";
