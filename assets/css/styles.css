@@ -171,6 +171,16 @@ input {
   font-size: 1.4rem;
   padding: 1.5rem 1rem;
   border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: border-color 250ms;
+}
+
+.search-history-item:hover {
+  cursor: pointer;
+  border-color: #1E015B;
 }
 
 .search-history-item:nth-child( odd ) {
@@ -179,6 +189,15 @@ input {
 
 .search-history-item:last-of-type {
   margin-bottom: 0;
+}
+
+.trash-icon {
+  font-size: 2rem;
+  transition: color 250ms;
+}
+
+.trash-icon:hover {
+  color: hsla( 0, 100%, 66%, .75 );
 }
 
 /* Forecast */

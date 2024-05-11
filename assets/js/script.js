@@ -131,7 +131,11 @@ const createHistoryCitiesHTML = function( historyCities ) {
   let html = ``;
   for( const historyCity of historyCities ) {
     const { city, uniqueId } = historyCity;
-    html += `<li class="search-history-item" tabindex="0" data-id="${ uniqueId }">${ city }</li>`;
+    html +=
+      `<li class="search-history-item"
+      tabindex="0" data-id="${ uniqueId }">${ city }
+      <i class="fa-regular fa-trash-can trash-icon" tabindex="0"></i>
+      </li>`;
   }
   return html;
 }
@@ -190,6 +194,18 @@ searchHistoryList.addEventListener( "click", function( event ) {
         createFullForecast( city );
       }
     }
+  }
+  if( target.classList.contains( "trash-icon" ) ) {
+    const searchHistoryItem = target.closest( ".search-history-item" );
+    const uniqueId = searchHistoryItem.dataset.id;
+    // remove city from historyCities
+    for( let i = 0; i < historyCities.length; i++ ) {
+      if( historyCities[ i ].uniqueId === uniqueId ) historyCities.splice( i, 1 );
+    }
+    // update local storage with new historyCities
+    localStorage.setItem( "historyCities", JSON.stringify( historyCities ) );
+    // remove rendered li
+    searchHistoryList.removeChild( searchHistoryItem );
   }
 } );
 
