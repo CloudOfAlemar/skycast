@@ -44,7 +44,6 @@ const fetchApi = function() {
       return res.json();
     } )
     .then( function( forecastData ) {
-      console.log( forecastData.list );
       dataObj.otherForecastData = forecastData.list;
       resolve( dataObj );
     } )
@@ -129,6 +128,21 @@ const renderHistoryCitiesHTML = function( historyCities ) {
   searchHistoryList.innerHTML = createHistoryCitiesHTML( historyCities );
 }
 
+const addToHistoryCities = function( dataObj ) {
+  if( historyCities.length === 0 ) {
+    historyCities.push( dataObj );
+  } else {
+    let existsInArray = false;
+    for( const city of historyCities ) {
+      if( dataObj.lat === city.lat && dataObj.lon === city.lon ) {
+        existsInArray = true;
+        break;
+      }
+    }
+    if( !existsInArray ) historyCities.push( dataObj );
+  }
+}
+
 const clearSearchInput = function() {
   searchInput.value = "";
 }
@@ -149,7 +163,7 @@ searchBtn.addEventListener( "click", function( event ) {
   fetchApi()
     .then( function( dataObj ) {
       createFullForecast( dataObj );
-      historyCities.push( dataObj );
+      addToHistoryCities( dataObj );
       localStorage.setItem( "historyCities", JSON.stringify( historyCities ) );
       renderHistoryCitiesHTML( historyCities );
       clearSearchInput();
